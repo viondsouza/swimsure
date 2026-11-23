@@ -9,6 +9,7 @@ export type FormState = {
   message: string;
   errors?: Partial<Record<keyof Enquiry, string>>;
   demo?: boolean;
+  emailed?: boolean;
   values?: Partial<Enquiry>;
 };
 
@@ -67,8 +68,9 @@ export async function submitEnquiry(_prev: FormState, fd: FormData): Promise<For
     };
   }
 
+  let emailed = false;
   if (emailConfigured()) {
-    await sendEnquiryEmails(e);
+    emailed = (await sendEnquiryEmails(e)).autoReply;
   } else {
     console.warn("[enquiry] Gmail not set up yet, so no emails were sent.");
   }
@@ -76,6 +78,7 @@ export async function submitEnquiry(_prev: FormState, fd: FormData): Promise<For
   const firstName = e.name.split(/\s+/)[0];
   return {
     ok: true,
+    emailed,
     message:
       e.kind === "society"
         ? `Thank you, ${firstName}! We'll call you within one working day to set up a chat with your committee.`

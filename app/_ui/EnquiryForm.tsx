@@ -36,7 +36,7 @@ export default function EnquiryForm() {
         </svg>
         <h3>You&apos;re in.</h3>
         <p>{state.message}</p>
-        {!state.demo && <p className="muted">We&apos;ve also sent a confirmation to your email. Check your spam folder if you don&apos;t see it.</p>}
+        {state.emailed && <p className="muted">We&apos;ve also sent a confirmation to your email. Check your spam folder if you don&apos;t see it.</p>}
       </div>
     );
   }
