@@ -2,6 +2,10 @@
 
 A one-page website for SwimSure ("A swim school inside your society's pool"), built from the Demo Day pitch deck.
 
+**Live:** https://swimsure.vercel.app
+
+**How it works:** form → saved in Supabase → confirmation email to the person + alert email to SwimSure. Every push to `main` on GitHub republishes the site on Vercel.
+
 **What it does**
 
 - Short landing page: photo hero, how it works, price, societies, FAQ and the form. Sticky "Book free demo" bar on phones.
