@@ -5,9 +5,9 @@ import { submitEnquiry, type FormState } from "../actions";
 import type { Kind } from "@/lib/enquiry";
 
 const TABS: { kind: Kind; label: string; hint: string }[] = [
-  { kind: "parent", label: "I'm a parent", hint: "Book a free demo day for your child." },
-  { kind: "society", label: "Society committee", hint: "Bring SwimSure to your pool, at no cost." },
-  { kind: "coach", label: "Coach / lifeguard", hint: "Steady evening work close to home." },
+  { kind: "parent", label: "I'm a parent", hint: "Book a free water-safety day for your child." },
+  { kind: "society", label: "Society committee", hint: "Bring SwimSure to your pool. No cost, 15% of fees to you." },
+  { kind: "coach", label: "Coach / lifeguard", hint: "Salaried evening work, close to home." },
 ];
 
 const initial: FormState = { ok: false, message: "" };
@@ -151,7 +151,7 @@ export default function EnquiryForm() {
       )}
 
       <button className="btn btn-primary btn-block" disabled={pending}>
-        {pending ? "Sending…" : kind === "parent" ? "Book my free demo day" : kind === "society" ? "Request a committee chat" : "Send my details"}
+        {pending ? "Sending…" : kind === "parent" ? "Book my free water-safety day" : kind === "society" ? "Request a committee chat" : "Send my details"}
       </button>
       <p className="fine">We reply within one working day. No spam, ever.</p>
     </form>
