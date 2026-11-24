@@ -1,8 +1,8 @@
 import EnquiryForm from "./_ui/EnquiryForm";
-import Logo from "./_ui/Logo";
+import SiteHeader from "./_ui/SiteHeader";
+import SiteFooter from "./_ui/SiteFooter";
 import SocietyCalculator from "./_ui/SocietyCalculator";
 import Reveal from "./_ui/Reveal";
-import { PIPELINE, type Stage } from "@/lib/pipeline";
 
 // Free photo by Kevin Paes on Unsplash (Unsplash License): unsplash.com/photos/1AZzPJWhyMQ
 const PHOTO = "https://images.unsplash.com/photo-1651614158095-b98b6c1da74b?auto=format&fit=crop&q=80";
@@ -72,34 +72,10 @@ const FAQ: [string, string][] = [
 
 const BATCHES = ["5–6 pm", "6–7 pm", "7–8 pm"];
 
-const STAGE_NOTE: Record<Stage, string> = {
-  Next: "after the pilot, 2027",
-  Planned: "2027–28",
-  Exploring: "ideas we're testing",
-};
-
-const img = (id: string, w: number) => `https://images.unsplash.com/${id}?auto=format&fit=crop&q=70&w=${w}&h=${Math.round(w * 0.7)}`;
-
 export default function Home() {
   return (
     <>
-      <header className="nav">
-        <div className="wrap nav-inner">
-          <a href="#top" aria-label="SwimSure home" className="logo-link">
-            <Logo />
-          </a>
-          <nav className="nav-links" aria-label="Sections">
-            <a href="#how">How it works</a>
-            <a href="#safety">Safety</a>
-            <a href="#price">Price</a>
-            <a href="#societies">Societies</a>
-            <a href="#faq">FAQ</a>
-          </nav>
-          <a href="#enquire-parent" className="btn btn-primary btn-sm">
-            Book free day
-          </a>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main id="top">
         {/* HERO */}
@@ -350,7 +326,9 @@ export default function Home() {
                 day.
               </p>
               <figure className="founder">
-                <blockquote>&ldquo;12 years in the water: I know who to hire, and what safe looks like.&rdquo;</blockquote>
+                <blockquote>
+                  &ldquo;12 years in the water: I know who to hire, and what safe looks like.&rdquo;
+                </blockquote>
                 <figcaption>
                   <span className="avatar" aria-hidden>
                     VD
@@ -368,73 +346,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* COMING NEXT */}
-        <section className="section pipeline" id="next">
-          <div className="wrap" data-reveal>
-            <div className="pipe-head">
-              <div>
-                <p className="eyebrow">Coming next</p>
-                <h2>More ways to use the pool downstairs.</h2>
-                <p className="sub">
-                  Children&apos;s classes come first. Once they run well, these are in our pipeline. Tap the ones
-                  you&apos;d join, and we&apos;ll start where the interest is.
-                </p>
-              </div>
-              <ol className="stages" aria-label="Pipeline stages">
-                {(Object.keys(STAGE_NOTE) as Stage[]).map((st) => (
-                  <li key={st}>
-                    <span className={`stage stage-${st.toLowerCase()}`}>{st}</span>
-                    {STAGE_NOTE[st]}
-                  </li>
-                ))}
-              </ol>
-            </div>
-            <ul className="pipe-grid">
-              {PIPELINE.map((p) => (
-                <li key={p.slug} className="pipe-card">
-                  <div className="pipe-photo">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={img(p.photo, 640)}
-                      srcSet={`${img(p.photo, 420)} 420w, ${img(p.photo, 640)} 640w, ${img(p.photo, 900)} 900w`}
-                      sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 360px"
-                      alt={p.alt}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <span className={`stage stage-${p.stage.toLowerCase()}`}>{p.stage}</span>
-                  </div>
-                  <div className="pipe-body">
-                    <h3>{p.title}</h3>
-                    <p>{p.text}</p>
-                    <a href={`#interest-${p.slug}`} className="pipe-link">
-                      I&apos;m interested <span aria-hidden>→</span>
-                    </a>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
       </main>
       <Reveal />
 
-      <footer className="footer">
-        <div className="wrap footer-inner">
-          <Logo light />
-          <p>
-            Bengaluru · © {new Date().getFullYear()} SwimSure ·{" "}
-            <a href="https://unsplash.com/photos/1AZzPJWhyMQ" target="_blank" rel="noopener noreferrer">
-              Photos: Kevin Paes and others / Unsplash
-            </a>
-          </p>
-        </div>
-        <p className="wrap sources">
-          Sources: academy price from Nisha Millet&apos;s Swimming Academy website (₹6,300 for 12 classes, Nov 2026).
-          Court case reported by Deccan Herald (7 Aug 2024).
-        </p>
-      </footer>
+      <SiteFooter />
 
       {/* Phones: booking button always within reach */}
       <div className="mobile-cta">
