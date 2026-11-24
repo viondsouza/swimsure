@@ -8,7 +8,7 @@ A one-page website for SwimSure ("A swim school inside your society's pool"), bu
 
 **What it does**
 
-- Short landing page: photo hero, how it works, price, societies, FAQ and the form. Sticky "Book free demo" bar on phones.
+- Short landing page. Sections: hero, how it works, safety + comparison table, price with batch timetable, societies (earnings calculator), FAQ, form. Sticky "Book a free water-safety day" bar on phones.
 - **Society earnings calculator**: drag a slider to see what 15% of fees earns the society.
 - **Enquiry form** with three tabs (Parent / Society / Coach). Each enquiry:
   1. is **saved in Supabase** (table `enquiries`),
