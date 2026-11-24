@@ -71,9 +71,10 @@ function autoReply(e: Enquiry) {
           p("Here's the short version of how it works:") +
           list([
             "Your society gives SwimSure exclusive rights to run lessons in the pool.",
-            "We provide <b>one certified coach and one lifeguard</b> at every class, plus insurance.",
+            "We provide <b>one certified coach and one lifeguard</b> at every class, plus insurance. No batch runs short-staffed.",
+            "A <b>1-year written agreement</b>, and there's no cost to the society.",
             "Parents prepay us by UPI, and your society receives <b>15% of the fees</b> every month.",
-            "There's nothing to build and nothing to buy. We start with a free demo day at your pool.",
+            "We start with a <b>free water-safety day</b> for every child at your pool.",
           ]) +
           p("If you have a pool rulebook or timings, feel free to reply to this email with them.") +
           sign,
@@ -86,7 +87,7 @@ function autoReply(e: Enquiry) {
       html: shell(
         "Thanks for reaching out",
         hi +
-          p("Thank you for your interest in coaching with SwimSure. We run small batches of up to 10 children, from 5 to 8 pm, inside apartment-society pools across Bengaluru, with a lifeguard on deck at every class.") +
+          p("Thank you for your interest in coaching with SwimSure. We offer salaried evening work: small batches of up to 10 children, Monday, Wednesday and Friday from 5 to 8 pm, inside apartment-society pools across Bengaluru, with a lifeguard on deck at every class.") +
           p("I'll read your details and get back to you within a few days. If you have certificates (STA, lifeguard or first aid), reply to this email with a photo of them.") +
           sign,
       ),
@@ -102,9 +103,9 @@ function autoReply(e: Enquiry) {
         list([
           "Lessons <b>inside your own society's pool</b>, so there's no travel.",
           "A <b>certified coach and a lifeguard</b> at every class, with up to 10 children per batch.",
-          "Children aged <b>5 to 12</b>, in evening batches between 5 and 8 pm.",
-          "<b>₹3,000 a month for 12 classes</b> (₹250 a class), paid in advance by UPI.",
-          "A <b>free demo day</b> at the pool before you pay anything.",
+          "Children aged <b>5 to 12</b>, on Monday, Wednesday and Friday evenings, in batches between 5 and 8 pm.",
+          "<b>₹5,400 a month for 12 classes</b> (₹450 a class), paid in advance by UPI. Fees are before GST.",
+          "A <b>free water-safety day</b> at the pool before you pay anything. Our first pilot opens in early 2027.",
         ]) +
         p("If your society doesn't have SwimSure yet, we'll talk to your committee. The more parents who ask, the faster it happens.") +
         sign,
