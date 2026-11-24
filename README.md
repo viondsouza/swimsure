@@ -8,7 +8,7 @@ A one-page website for SwimSure ("A swim school inside your society's pool"), bu
 
 **What it does**
 
-- Short landing page. Sections: hero, how it works, safety + comparison table, price with batch timetable, societies (earnings calculator), FAQ, form, and a "Coming next" pipeline (aqua yoga for women, water calm sessions, camps, adults, seniors, junior lifeguards) whose "I'm interested" buttons pre-fill the form. Sticky "Book a free water-safety day" bar on phones.
+- Short landing page. Sections: hero, how it works, safety + comparison table, price with batch timetable, societies (earnings calculator), FAQ and form. A separate `/coming-next` page shows the pipeline (aqua yoga for women, water calm sessions, camps, adults, seniors, junior lifeguards) whose "I'm interested" buttons pre-fill the form. Sticky "Book a free water-safety day" bar on phones.
 - **Society earnings calculator**: drag a slider to see what 15% of fees earns the society.
 - **Enquiry form** with three tabs (Parent / Society / Coach). Each enquiry:
   1. is **saved in Supabase** (table `enquiries`),
