@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useState } from "react";
 import { submitEnquiry, type FormState } from "../actions";
 import type { Kind } from "@/lib/enquiry";
+import { programmeBySlug } from "@/lib/pipeline";
 
 const TABS: { kind: Kind; label: string; hint: string }[] = [
   { kind: "parent", label: "I'm a parent", hint: "Book a free water-safety day for your child." },
@@ -14,12 +15,21 @@ const initial: FormState = { ok: false, message: "" };
 
 export default function EnquiryForm() {
   const [kind, setKind] = useState<Kind>("parent");
+  const [interest, setInterest] = useState(""); // filled by "I'm interested" buttons
   const [state, formAction, pending] = useActionState(submitEnquiry, initial);
 
-  // Links like #enquire-society pick the right tab.
+  // Links like #enquire-society pick the right tab; #interest-aqua-yoga pre-fills the message.
   useEffect(() => {
     const fromHash = () => {
-      const k = window.location.hash.replace("#enquire-", "") as Kind;
+      const hash = window.location.hash;
+      const programme = hash.startsWith("#interest-") ? programmeBySlug(hash.slice(10)) : undefined;
+      if (programme) {
+        setKind("parent");
+        setInterest(`I'm interested in: ${programme.title}`);
+        document.getElementById("enquire")?.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+      const k = hash.replace("#enquire-", "") as Kind;
       if (TABS.some((t) => t.kind === k)) setKind(k);
     };
     fromHash();
@@ -141,7 +151,7 @@ export default function EnquiryForm() {
         <span>
           Anything else? <em>(optional)</em>
         </span>
-        <textarea name="message" defaultValue={v.message} rows={3} placeholder={kind === "society" ? "Pool size, timings, who to talk to…" : "Questions, preferred timings…"} />
+        <textarea key={interest} name="message" defaultValue={v.message ?? interest} rows={3} placeholder={kind === "society" ? "Pool size, timings, who to talk to…" : "Questions, preferred timings…"} />
       </label>
 
       {state.message && !state.ok && (
